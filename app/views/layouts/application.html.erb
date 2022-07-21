@@ -4,8 +4,8 @@
     <title>TweetApp</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -23,9 +23,23 @@
         <li>
           <%= link_to("新規投稿", "/posts/new") %>
         </li>
+        <li>
+          <%= link_to("ユーザー一覧", "/users/index") %>
+        </li>
+        <!-- 新規登録ページへのリンクを作成してください -->
+         <li>
+          <%= link_to("新規登録", "/signup") %>
+        </li>       
+        
       </ul>
     </header>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
-
